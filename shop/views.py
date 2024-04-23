@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404, render
 
 from .models import Category, ProductProxy
+
 
 def product_view(request):
     products = ProductProxy.objects.all()
@@ -8,7 +9,7 @@ def product_view(request):
 
 def product_detail_view(request, slug):
     product = get_object_or_404(ProductProxy, slug=slug)
-    return render(request, 'shop/products_detail.html', {'product':product})
+    return render(request, 'shop/product_detail.html', {'product':product})
 
 def category_list(request, slug):
     category = get_object_or_404(Category, slug=slug)
